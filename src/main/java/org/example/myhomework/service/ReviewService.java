@@ -53,4 +53,41 @@ public class ReviewService {
         }
         return dtos;
     }
+    // 단건 조회
+    @Transactional
+    public ReviewResponse findById(Long movieId, Long reviewId) {
+        Movie movie = movieRepository.findById(movieId).orElseThrow(
+                () -> new IllegalArgumentException("그런 아이디는 없습니다.")
+        );
+        List<Review> reviews = reviewRepository.findAllByMovie(movie);
+        Review review = reviews.stream()
+                .filter(rev -> rev.getId().equals(reviewId))
+                .findFirst()
+                .orElseThrow(
+                () -> new IllegalArgumentException("그런 리뷰 아이디는 없습니다.")
+                );
+        return new ReviewResponse(
+                review.getId(),
+                review.getContent()
+        );
+    }
+    // 수정
+    @Transactional
+    public ReviewResponse update(Long movieId, Long reviewId, ReviewRequest request) {
+        Movie movie = movieRepository.findById(movieId).orElseThrow(
+                () -> new IllegalArgumentException("그런 아이디는 없습니다.")
+        );
+        List<Review> reviews = reviewRepository.findAllByMovie(movie);
+        Review review = reviews.stream()
+                .filter(rev -> rev.getId().equals(reviewId))
+                .findFirst()
+                .orElseThrow(
+                        () -> new IllegalArgumentException("그런 리뷰 아이디는 없습니다.")
+                );
+        review.changeContent(request.getContent());
+        return new ReviewResponse(
+                review.getId(),
+                review.getContent()
+        );
+    }
 }

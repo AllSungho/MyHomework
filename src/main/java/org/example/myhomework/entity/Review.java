@@ -20,4 +20,8 @@ public class Review {
         this.content = content;
         this.movie = movie;
     }
+
+    public void changeContent(String content) {
+        this.content = content;
+    }
 }
