@@ -3,7 +3,6 @@ package org.example.myhomework.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.myhomework.dto.ReviewRequest;
 import org.example.myhomework.dto.ReviewResponse;
-import org.example.myhomework.entity.Review;
 import org.example.myhomework.service.ReviewService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.PathMatcher;

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class Review {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;

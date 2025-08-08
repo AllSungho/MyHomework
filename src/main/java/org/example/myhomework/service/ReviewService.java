@@ -35,6 +35,7 @@ public class ReviewService {
                 savedReview.getContent()
         );
     }
+
     @Transactional(readOnly = true)
     public List<ReviewResponse> findAll(Long movieId) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(

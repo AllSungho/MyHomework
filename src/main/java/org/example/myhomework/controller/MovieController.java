@@ -26,7 +26,6 @@ public class MovieController {
     public ResponseEntity<List<MovieResponse>> getMovies() {
         return ResponseEntity.ok(movieService.findAll());
     }
-
     // 단건 조회
     @GetMapping("/movies/{movieId}")
     public ResponseEntity<MovieResponse> findById(
@@ -34,7 +33,6 @@ public class MovieController {
     ) {
         return ResponseEntity.ok(movieService.findById(movieId));
     }
-
     // 수정
     @PutMapping("/movies/{movieId}")
     public ResponseEntity<MovieResponse> update(
