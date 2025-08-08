@@ -1,4 +1,7 @@
 package org.example.myhomework.repository;
 
-public interface MovieRepository {
+import org.example.myhomework.entity.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MovieRepository extends JpaRepository<Movie,Long> {
 }
